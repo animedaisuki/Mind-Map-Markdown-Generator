@@ -42,6 +42,21 @@ def generate_markdown(formatted_description):
     return response
 
 
+def parse_markdown(generated_markdown):
+    lines = generated_markdown.splitlines()
+
+    # 检查并删除第一行的 ```markdown
+    if lines[0].strip() == "```markdown":
+        lines = lines[1:]
+
+    # 检查并删除最后一行的 ```
+    if lines[-1].strip() == "```":
+        lines = lines[:-1]
+
+    # 将剩余的行重新组合成一个字符串
+    return "\n".join(lines)
+
+
 def main():
     print("请选择使用的formatter（输入1/2/3）\n1.generative formater\n2.criteria formatter (针对评分标准)\n3.跳过")
     formatter = input(">")
@@ -57,12 +72,13 @@ def main():
 
     if not formatter:
         markdown = generate_markdown(description)
+        markdown = parse_markdown(markdown)
         U.dump_text(markdown, "markdown/mind_map.md")
         return
 
     formatted_description = format_description(description, formatter)
     markdown = generate_markdown(formatted_description)
-
+    markdown = parse_markdown(markdown)
     U.dump_text(markdown, "markdown/mind_map.md")
 
 
