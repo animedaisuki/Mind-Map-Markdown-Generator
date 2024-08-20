@@ -28,7 +28,7 @@ Markdown Mind Map Generator 是一个基于 OpenAI 的 GPT-4o 模型的工具，
 
 1. 运行程序：
     ```bash
-    python your_script_name.py
+    python main.py
     ```
 2. 输入需要生成 Markdown 的描述性内容。
 3. 程序将自动格式化输入内容，并生成相应的 Markdown 文档，文件保存在 `markdown/mind_map.md`。

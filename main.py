@@ -15,7 +15,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def format_description(description):
     llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
-    prompt = load_prompt("generative_formater")
+    prompt = load_prompt("criteria_formater")
     system_message = SystemMessage(content=prompt)
     human_message = HumanMessage(description)
 
