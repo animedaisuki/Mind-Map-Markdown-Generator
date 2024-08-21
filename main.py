@@ -1,4 +1,4 @@
-from prompts import load_prompt, load_descriptions
+from prompts import load_prompt
 import utils as U
 
 from langchain.chat_models import ChatOpenAI
@@ -45,15 +45,12 @@ def generate_markdown(formatted_description):
 def parse_markdown(generated_markdown):
     lines = generated_markdown.splitlines()
 
-    # 检查并删除第一行的 ```markdown
     if lines[0].strip() == "```markdown":
         lines = lines[1:]
 
-    # 检查并删除最后一行的 ```
     if lines[-1].strip() == "```":
         lines = lines[:-1]
 
-    # 将剩余的行重新组合成一个字符串
     return "\n".join(lines)
 
 
